@@ -1,0 +1,36 @@
+Crear una Api rest utilizando express y Typescript
+
+===========Utilizaremos los siguientes paquetes ===========
+
+-- express: un framework web para Node que nos permite crear APIs y un servidor back-end
+-- ts node: para ejecutar código TypeScript en Node
+-- Typescript: para compilar código TypeScript en JavaScript
+-- @types/express: para usar Express en TypeScript
+-- nodemon: para reiniciar el servidor cuando se realizan cambios
+
+npm install -D nodemon ts-node @types/express typescript
+npm install express
+
+=========Agregamos el script para ejecutar nuestro servidor==========
+"start": "nodemon --exec ts-node src/index.ts"
+
+====inicializar t.config======
+tsc --init
+
+Felicidades!!! hemos terminado el servidor.
+
+Error: Unknown file extension ".ts"
+- Este error sucede segun por la configuracion de "type":"module". del pakage.json
+debemos quitarlo y  seguir utilizando los imports ya que al transpilar se transforma
+
+
+-------------------------------------------------------------------------------
+Aprendizajes importantes de typescript
+
+-- para que typescript agregue los tipos de los objetos json que importemos(y  posiblemente otros mas)
+colocamos la siguiente configuracion en nuestro tsconfig:
+    /* Advanced Options */
+    "resolveJsonModule": true
+
+-- Archivo types.d.ts
+es un estandar que se utiliza como archivo de tipos, en el que se crean los tipos y se exportan a otros modlos
