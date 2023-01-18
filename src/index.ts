@@ -1,7 +1,4 @@
 import app from "./app";
-import * as dotenv from "dotenv"
-
-dotenv.config();
 
 function Main(){
     app.listen(app.get("port"), ()=>{
