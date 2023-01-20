@@ -6,7 +6,7 @@ export interface user{
 }
 
 export interface TokenValues{
-    nameUser: string,
+    userName: string,
     email : string,
     password: string
 }

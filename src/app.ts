@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors"
 import "../config.env.ts"
 
 // routes V0
@@ -15,6 +16,7 @@ const app = express();
 app.set("port", port);
 
 // middlewares
+app.use(cors());
 app.use(express.json());
 
 // routes V0

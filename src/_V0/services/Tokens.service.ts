@@ -7,7 +7,7 @@ export function createTokenUser(values:TokenValues){
 
         let token = jwt.sign({
             exp: Math.floor(Date.now()/1000)+(60*60*24*1),
-            nameUser: values.nameUser,
+            userName: values.userName,
             email : values.email,
             password: values.password
         }, process.env.SECRET as string)
@@ -15,8 +15,8 @@ export function createTokenUser(values:TokenValues){
         myToken = serialize("myTokenName", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite:"strict",
-            maxAge : 1000*60*60*24*1,
+            sameSite:"lax",
+            maxAge : 1000*60*60*24,
             path : "/"
         })
     return myToken;
@@ -27,14 +27,14 @@ export function createTokenGuest(){
         let token = jwt.sign({
             exp: Math.floor(Date.now()/1000)+(60*60*24*1),
             idUser : "0",
-            nameUser: "guest",
+            userName: "guest",
         }, process.env.SECRET as string)
 
         myToken = serialize("myTokenName", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite:"strict",
-            maxAge : 1000*60*60*24*1,
+            sameSite:"lax",
+            maxAge : 1000*60*60*24,
             path : "/"
         })
     return myToken;
