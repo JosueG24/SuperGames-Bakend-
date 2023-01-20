@@ -1,14 +1,12 @@
 import express from "express";
+import cookieParser from "cookie-parser"
 import cors from "cors"
 import "../config.env.ts"
-
 // routes V0
 import indexRouter_V0 from "./_V0/routes/index.routes";
 // routes V1
-
 // other
 import handleErrors from "./middlewares/handleErrors";
-
 
 const port = process.env.PORT || 4000
 
@@ -18,6 +16,7 @@ app.set("port", port);
 // middlewares
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 // routes V0
 app.use("/api/V0/",indexRouter_V0);
