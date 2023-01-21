@@ -1,5 +1,5 @@
 import { RequestHandler } from "express"
-import { loginValidation } from "../services/dataValidators.service"
+import { loginValidation, tokenValidator } from "../services/dataValidators.service"
 import tokenService from "../services/indexRoutes/getToken.service";
 
 export const Login : RequestHandler= async (req, res, next)=>{
@@ -30,8 +30,19 @@ export const LoginGuest : RequestHandler= async (req, res, next)=>{
 
 export const logout : RequestHandler= (req, res, next)=>{
     try {
-        console.log(req.cookies)
-        return res.status(200).json("Estamos en Logout")
+        const {myTokenName} = req.cookies;
+        // validar token
+        if(myTokenName == null){
+            return res.status(404).json({message:"no existe el token", error:true, data:null})
+        }
+        const isValid = tokenValidator(myTokenName)
+        // borrar token
+        if(isValid == false){
+            // si el token era invalido
+            return res.status(401).clearCookie("myTokenName").json({message:"Invalid token", error:true, data:null})
+        }
+        // si todo esta correcto
+        return res.status(200).clearCookie("myTokenName").json({message:"Logout succesfully", errror:false, data:null})
         
     } catch (error) {
         return res.status(500).json({message:"Error en el servidor", error})

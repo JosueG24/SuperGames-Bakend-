@@ -2,6 +2,7 @@
 
 import { TokenValues } from "../types";
 import axios from "axios"
+import { verify } from "jsonwebtoken";
 
 //
 export const newUserValidator:(data:any)=>Promise<false|TokenValues> = async (data:any)=>{
@@ -51,3 +52,15 @@ export const loginValidation:(data:{userName:string, password:string})=>Promise<
     }
     return {userName, password,email:userData.email}
 }
+//
+export const tokenValidator:(token:any)=>boolean = (token:any)=>{
+    try {            
+        if(!token){
+            return false
+        }
+        verify(token, process.env.SECRET as string)
+        return true;
+    } catch (error) {
+        return false;
+    }
+} 
