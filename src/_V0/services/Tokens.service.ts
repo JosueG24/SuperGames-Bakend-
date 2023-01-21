@@ -17,7 +17,8 @@ export function createTokenUser(values:TokenValues){
             secure: process.env.NODE_ENV === "production",
             sameSite:"lax",
             maxAge : 1000*60*60*24,
-            path : "/"
+            path : "/",
+            domain:"localhost"
         })
     return myToken;
 }
@@ -35,6 +36,7 @@ export function createTokenGuest(){
             secure: process.env.NODE_ENV === "production",
             sameSite:"lax",
             maxAge : 1000*60*60*24,
+            domain:"localhost",
             path : "/"
         })
     return myToken;
