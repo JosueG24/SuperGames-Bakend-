@@ -14,11 +14,9 @@ try {
         return res.status(400).json({message:"Bad request", error:true})
     }
     // Zona donde agregamos el usuario a la base de datos
-        // Buscar indice
-        const [searchId] = await pool.query("SELECT MAX(idUser) AS lastId FROM users") as any
-        const lastId = await searchId[0].lastId
+        
         // grabar nuevo usuario
-        const [result] = await pool.query("INSERT INTO  users(idUser, userName, email, password) VALUES (?, ?, ?, ?)", [lastId+1, validationOfDates.userName, validationOfDates.email, validationOfDates.password]) as any
+        const [result] = await pool.query("INSERT INTO  users(idUser, userName, email, password) VALUES (?, ?, ?, ?)", [validationOfDates.idUser, validationOfDates.userName, validationOfDates.email, validationOfDates.password]) as any
         if(result.affectedRows < 1){
             console.log({error:"No se guardoel nuevo usuario"})
             return res.status(500).json({message:"ha ocurrido un error inesperado, asegurese de tener coneccion a interet.", error:true})

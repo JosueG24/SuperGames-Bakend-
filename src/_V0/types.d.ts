@@ -6,6 +6,7 @@ export interface user{
 }
 
 export interface TokenValues{
+    idUser:number,
     userName: string,
     email : string,
     password: string
@@ -16,4 +17,7 @@ export interface responseService{
     message: string
     data: any
     error: any
+}
+
+export interface tokenExtract extends TokenValues, JwtPayload{
 }

@@ -3,6 +3,8 @@
 import { TokenValues } from "../types";
 import axios from "axios"
 import { verify } from "jsonwebtoken";
+import { tokenExtract } from "../types";
+import pool from "../../Database/Pool";
 
 //
 export const newUserValidator:(data:any)=>Promise<false|TokenValues> = async (data:any)=>{
@@ -27,11 +29,13 @@ export const newUserValidator:(data:any)=>Promise<false|TokenValues> = async (da
     if(!expEmail.test(email)){
         return false
     }  
-
-    return { userName, email, password}
+    // Buscar indice
+    const [searchId] = await pool.query("SELECT MAX(idUser) AS lastId FROM users") as any
+    const lastId = await searchId[0].lastId
+    return { idUser:lastId+1,userName, email, password}
 }
 //
-export const loginValidation:(data:{userName:string, password:string})=>Promise<false|{userName:string, password:string, email:string}> = async (data)=>{
+export const loginValidation:(data:{userName:string, password:string})=>Promise<false|{idUser:number,userName:string, password:string, email:string}> = async (data)=>{
     let {userName, password} = data;
     if(typeof userName !== "string" || typeof password !== "string"){
         return false
@@ -50,16 +54,16 @@ export const loginValidation:(data:{userName:string, password:string})=>Promise<
     if(userData.password !== password){
         return false
     }
-    return {userName, password,email:userData.email}
+    return {idUser:userData.idUser, userName, password,email:userData.email}
 }
 //
-export const tokenValidator:(token:any)=>boolean = (token:any)=>{
+export const tokenValidator:(token:any)=>false|tokenExtract = (token:any)=>{
     try {            
         if(!token){
             return false
         }
-        verify(token, process.env.SECRET as string)
-        return true;
+        const values = verify(token, process.env.SECRET as string) as tokenExtract
+        return values;
     } catch (error) {
         return false;
     }
