@@ -11,21 +11,21 @@ const indexRouter = Router();
 indexRouter.get("/ping", pingPong)
 
 // New User routes
-indexRouter.post("/newUser",newUser)  // finished --verificar
+indexRouter.post("/newUser",newUser)  // finished
 
 // Score routes
-indexRouter.post("/saveScore",saveScore)
-indexRouter.post("/rancking/global",ranking_glogal)  //finishedd --testear --verificar
-indexRouter.post("/rancking/mensual",ranking_mensual)  //finishedd --testear --verificar
-indexRouter.post("/validate_record",validate_record)  //finishedd --hacerPruebas --hacerEsquemas --testear --verificar
+indexRouter.post("/saveScore",saveScore)  //finished --testear
+indexRouter.post("/rancking/global",ranking_glogal)  //finishedd --testear 
+indexRouter.post("/rancking/mensual",ranking_mensual)  //finishedd --testear 
+indexRouter.post("/validate_record",validate_record)  //finishedd --hacerPruebas --hacerEsquemas --testear --verificar --montarElServicio
 
 // Show users routes
-indexRouter.get("/showAll", showAll)  // finished --verificar
-indexRouter.get("/showOne/:name", showOne) // finished --verificar
+indexRouter.get("/showAll", showAll)  // finished
+indexRouter.get("/showOne/:name", showOne) // finished
 
 // User Auth routes
-indexRouter.post("/login",Login)  // finished --verificar
-indexRouter.post("/login/guest",LoginGuest)  // finished --verificar
-indexRouter.post("/logout",logout)  // finished --verificar
+indexRouter.post("/login",Login)  // finished
+indexRouter.post("/login/guest",LoginGuest)  // finished
+indexRouter.post("/logout",logout)  // finished
 
 export default indexRouter;

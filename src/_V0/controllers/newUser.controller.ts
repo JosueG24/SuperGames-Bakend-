@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import pool from "../../Database/Pool";
 
-import tokenService from "../services/indexRoutes/getToken.service";
+import tokenService from "../services/SessionServices/getToken.service";
 import { newUserValidator } from "../services/dataValidators.service";
 
 export const newUser:RequestHandler = async (req, res, next)=>{
