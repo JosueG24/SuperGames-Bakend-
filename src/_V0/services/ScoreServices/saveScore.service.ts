@@ -22,7 +22,7 @@ export default class handlerService{
         this.puntuacion = params.puntuacion
         this.userName = params.userName
         this.level = params.level
-        if(params.level == undefined){
+        if(params.level == ""){
             this.level = 1
         }
     }

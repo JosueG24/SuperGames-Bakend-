@@ -14,10 +14,10 @@ indexRouter.get("/ping", pingPong)
 indexRouter.post("/newUser",newUser)  // finished
 
 // Score routes
-indexRouter.post("/saveScore",saveScore)  //finished --testear
-indexRouter.post("/rancking/global",ranking_glogal)  //finishedd --testear 
-indexRouter.post("/rancking/mensual",ranking_mensual)  //finishedd --testear 
-indexRouter.post("/validate_record",validate_record)  //finishedd --hacerPruebas --hacerEsquemas --testear --verificar --montarElServicio
+indexRouter.post("/saveScore",saveScore)  //finished
+indexRouter.post("/rancking/global",ranking_glogal)  //finishedd 
+indexRouter.post("/rancking/mensual",ranking_mensual)  //finishedd 
+indexRouter.post("/validateRecord",validate_record)  //finishedd
 
 // Show users routes
 indexRouter.get("/showAll", showAll)  // finished
