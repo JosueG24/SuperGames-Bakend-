@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken"
 import {serialize} from "cookie"
 import { TokenValues } from "../types";
+import dotenv from 'dotenv';
+dotenv.config();
 
 export function createTokenUser(values:TokenValues){
     let myToken;

@@ -5,6 +5,8 @@ import axios from "axios"
 import { verify } from "jsonwebtoken";
 import { tokenExtract } from "../types";
 import pool from "../../Database/Pool";
+import dotenv from 'dotenv';
+dotenv.config();
 
 //
 export const newUserValidator:(data:any)=>Promise<false|TokenValues> = async (data:any)=>{

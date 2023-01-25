@@ -1,9 +1,10 @@
 import express from "express";
 import cookieParser from "cookie-parser"
 import cors from "cors"
-import "../config.env.ts"
 import indexRouter_V0 from "./_V0/routes/index.routes";
 import handleErrors from "./middlewares/handleErrors";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const port = process.env.PORT || 4000
 
