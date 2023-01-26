@@ -16,7 +16,7 @@ export function createTokenUser(values:TokenValues){
         
         myToken = serialize("myTokenName", token, {
             httpOnly: true,
-            secure: false,
+            secure: process.env.NODE_ENV === "production",
             sameSite:"lax",
             maxAge : 1000*60*60*24,
             path : "/",
@@ -38,9 +38,9 @@ export function createTokenGuest(){
         myToken = serialize("myTokenName", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite:"lax",
+            sameSite:"none",
             maxAge : 1000*60*60*24,
-            // domain:"localhost", // <== revisar esto
+            domain:"localhost", // <== revisar esto
             path : "/"
         })
     return myToken;
