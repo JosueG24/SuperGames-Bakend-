@@ -8,6 +8,7 @@ import pool from "../../Database/Pool";
 import dotenv from 'dotenv';
 dotenv.config();
 
+const url = process.env.THIS_URL
 //
 export const newUserValidator:(data:any)=>Promise<false|TokenValues> = async (data:any)=>{
     let { userName, email, password} =  data;
@@ -22,7 +23,7 @@ export const newUserValidator:(data:any)=>Promise<false|TokenValues> = async (da
     }
     
     // validar userName ==== No olvides validar si el usuario ya existe
-        const result = await axios.get("http://localhost:4000/api/V0/showOne/"+userName);
+        const result = await axios.get(url+"/api/V0/showOne/"+userName);
         if(result.data.data.length > 0) {
             return false
         }
@@ -48,7 +49,7 @@ export const loginValidation:(data:{userName:string, password:string})=>Promise<
         return false
     }
 
-    const result = await axios.get("http://localhost:4000/api/V0/showOne/"+userName);
+    const result = await axios.get(url+"/api/V0/showOne/"+userName);
     if(result.data.data.length !== 1) {
         return false
     }
