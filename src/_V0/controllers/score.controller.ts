@@ -10,9 +10,9 @@ import validateRecordService from "../services/ScoreServices/validateRecord.serv
 export const saveScore : RequestHandler = async (req, res, next)=>{
     try {
         const {myTokenName} = req.cookies;
-        if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:true, data:null})
+        if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:"token inexistente", data:null})
         const isValid = tokenValidator(myTokenName)
-        if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:true, data:null})
+        if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:"token invalido", data:null})
         const {puntuacion, mode, level} = req.body;
         
         const service = new savewScoreService({mode:mode,level:level, puntuacion:puntuacion, userName:isValid.userName})
@@ -30,9 +30,9 @@ export const ranking_glogal : RequestHandler = async(req, res, next)=>{
         const {mode} = req.body;
         
         const {myTokenName} = req.cookies;
-        if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:true, data:null})
+        if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:"token inexistente", data:null})
         const isValid:tokenExtract|boolean = tokenValidator(myTokenName)
-        if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:true, data:null})
+        if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:"tokien invalido", data:null})
         const {userName} = isValid;
 
         const service = new ranckingsService({mode:mode, ranck:"global", userName:isValid.userName})
@@ -50,9 +50,9 @@ export const ranking_mensual : RequestHandler = async (req, res, next)=>{
         const {mode} = req.body;
 
         const {myTokenName} = req.cookies;
-        if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:true, data:null})
+        if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:"token inexistente", data:null})
         const isValid = tokenValidator(myTokenName)
-        if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:true, data:null})
+        if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:"token invalido", data:null})
         const {userName} = isValid;
 
         const service = new ranckingsService({mode:mode, ranck:"mensual", userName:isValid.userName})
@@ -70,9 +70,9 @@ export const validate_record : RequestHandler = async (req, res, next)=>{
     try {
         const {mode, puntuacion, level} = req.body;
         const {myTokenName} = req.cookies;
-        if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:true, data:null})
+        if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:"token inexistente", data:null})
         const isValid = tokenValidator(myTokenName)
-        if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:true, data:null})
+        if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:"token invalido", data:null})
 
         if(isValid.userName == "guest"){
             return res.status(200).json({message: "invitado", error:null, data:null})

@@ -11,7 +11,7 @@ try {
     // validamos los datos que recibimos
     const validationOfDates = await newUserValidator({ userName, email, password})
     if (validationOfDates == false){
-        return res.status(400).json({message:"Bad request", error:true})
+        return res.status(400).json({message:"Bad request", error:"peticion contiene datos invalidos"})
     }
     // Zona donde agregamos el usuario a la base de datos
         
@@ -19,7 +19,7 @@ try {
         const [result] = await pool.query("INSERT INTO  users(idUser, userName, email, password) VALUES (?, ?, ?, ?)", [validationOfDates.idUser, validationOfDates.userName, validationOfDates.email, validationOfDates.password]) as any
         if(result.affectedRows < 1){
             console.log({error:"No se guardoel nuevo usuario"})
-            return res.status(500).json({message:"ha ocurrido un error inesperado, asegurese de tener coneccion a interet.", error:true})
+            return res.status(500).json({message:"ha ocurrido un error inesperado, asegurese de tener coneccion a interet.", error:"fallo de la BD"})
         }
 
     //Creamos el token de inicio de sesion

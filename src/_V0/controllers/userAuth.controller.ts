@@ -33,13 +33,13 @@ export const logout : RequestHandler= (req, res, next)=>{
         const {myTokenName} = req.cookies;
         // validar token
         if(myTokenName == null){
-            return res.status(404).json({message:"no existe el token", error:true, data:null})
+            return res.status(404).json({message:"no existe el token", error:"token inexistente", data:null})
         }
         const isValid = tokenValidator(myTokenName)
         // borrar token
         if(isValid == false){
             // si el token era invalido
-            return res.status(401).clearCookie("myTokenName").json({message:"Invalid token", error:true, data:null})
+            return res.status(401).clearCookie("myTokenName").json({message:"Invalid token", error:"token invalido", data:null})
         }
         // si todo esta correcto
         return res.status(200).clearCookie("myTokenName").json({message:"Logout succesfully", errror:false, data:null})
