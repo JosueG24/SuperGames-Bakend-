@@ -16,11 +16,12 @@ export function createTokenUser(values:TokenValues){
         
         myToken = serialize("myTokenName", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite:"lax",
             maxAge : 1000*60*60*24,
             path : "/",
-            domain:"localhost"
+
+            secure: false,
+            sameSite:"strict",
+            domain:"supergames-bakend-production.up.railway.app"
         })
     return myToken;
 }
@@ -37,11 +38,12 @@ export function createTokenGuest(){
 
         myToken = serialize("myTokenName", token, {
             httpOnly: true,
-            secure: false,
-            sameSite:"lax",
             maxAge : 1000*60*60*24,
-            domain:"supergames-backend-production.up.railway.app", // <== revisar esto
-            path : "/"
+            path : "/",
+            
+            secure: false,
+            sameSite:"strict", // <== vijilar
+            domain:"supergames-backend-production", // <== revisar esto
         })
     return myToken;
 }
