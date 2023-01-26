@@ -8,7 +8,7 @@ import { Login, LoginGuest, logout } from "../controllers/userAuth.controller";
 
 const indexRouter = Router();
 
-indexRouter.get("/ping", pingPong)
+indexRouter.post("/ping", pingPong)
 
 // New User routes
 indexRouter.post("/newUser",newUser)  // finished
