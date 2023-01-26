@@ -36,11 +36,11 @@ export function createTokenGuest(){
         }, process.env.SECRET as string)
 
         myToken = serialize("myTokenName", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
+            httpOnly: false,
+            secure: false,
             sameSite:"none",
             maxAge : 1000*60*60*24,
-            domain:"localhost", // <== revisar esto
+            domain:"supergames-backend-production.up.railway.app", // <== revisar esto
             path : "/"
         })
     return myToken;
