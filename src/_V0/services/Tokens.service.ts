@@ -36,9 +36,9 @@ export function createTokenGuest(){
         }, process.env.SECRET as string)
 
         myToken = serialize("myTokenName", token, {
-            httpOnly: false,
+            httpOnly: true,
             secure: false,
-            sameSite:"none",
+            sameSite:"lax",
             maxAge : 1000*60*60*24,
             domain:"supergames-backend-production.up.railway.app", // <== revisar esto
             path : "/"
