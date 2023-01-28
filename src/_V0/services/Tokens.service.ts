@@ -19,8 +19,8 @@ export function createTokenUser(values:TokenValues){
             maxAge : 1000*60*60*24,
             path : "/",
 
-            secure: false,
-            sameSite:"strict",
+            secure: true,
+            sameSite:"lax",
             domain:"supergames-bakend-production.up.railway.app"
         })
     return myToken;
@@ -40,10 +40,10 @@ export function createTokenGuest(){
             httpOnly: true,
             maxAge : 1000*60*60*24,
             path : "/",
-            
-            secure: false,
-            sameSite:"strict", // <== vijilar
-            domain:"supergames-backend-production", // <== revisar esto
+
+            secure: true,
+            sameSite:"none", // <== vijilar
+            domain:"supergames-bakend-production.up.railway.app", // <== revisar esto
         })
     return myToken;
 }
