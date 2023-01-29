@@ -4,7 +4,6 @@ dotenv.config();
 
 export const pingPong : RequestHandler =(req, res, next)=>{
     try {
-        // crear token y devolverlo
         const cookies = req.cookies
         return res.status(200).json({message:"pong",data:cookies})
     } catch (error) {

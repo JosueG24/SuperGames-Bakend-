@@ -14,7 +14,7 @@ app.set("port", port);
 // middlewares
 app.use(cookieParser());
 app.use(cors({
-    origin: ['https://supergames-bakend-production.up.railway.app',"http://localhost:5173"],
+    origin: [/\.supergames-bakend-production.up.railway.app$/,"http://localhost:5173"],
     //origin:'*', 
     credentials:true
 }));

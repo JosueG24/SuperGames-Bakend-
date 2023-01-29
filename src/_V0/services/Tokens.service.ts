@@ -21,7 +21,7 @@ export function createTokenUser(values:TokenValues){
 
             secure: true,
             sameSite:"lax",
-            domain:"supergames-bakend-production.up.railway.app"
+            domain: process.env.NODE_ENV == "desarrollo"?  "localhost":"supergames-bakend-production.up.railway.app",
         })
     return myToken;
 }
@@ -42,8 +42,8 @@ export function createTokenGuest(){
             path : "/",
 
             secure: true,
-            sameSite:"none", // <== vijilar
-            domain:"supergames-bakend-production.up.railway.app", // <== revisar esto
+            sameSite:"lax",
+            domain: process.env.NODE_ENV == "desarrollo"?  "localhost":"supergames-bakend-production.up.railway.app",
         })
     return myToken;
 }
