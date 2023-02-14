@@ -38,17 +38,3 @@ export default class serviceHandler{
         return res;
     }
 }
-
-
-
-
-
-
-
-
-
-
-export async function createNweUser(type : object, values:object){
-    let myToken;
-
-}
