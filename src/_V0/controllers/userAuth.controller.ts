@@ -7,13 +7,13 @@ export const Login : RequestHandler= async (req, res, next)=>{
         const {userName,password } = req.body
         const validation = await loginValidation({userName, password}) 
         if(validation == false){
-            return res.status(401).json({message:"Unauthorized", error:"validation failed"})    
+            return res.status(401).json({message:"Unauthorized", error:"validation failed", data:null})    
         }
         // crear token y devolverlo
         const serviceResponse = tokenService.create(validation)
-        return res.status(serviceResponse.status).setHeader("set-Cookie", serviceResponse.data).json({message:"Ok", error:null})
+        return res.status(serviceResponse.status).setHeader("set-Cookie", serviceResponse.data).json({message:"Ok", error:null, data:null})
     } catch (error) {
-        return res.status(500).json({message:"Error en el servidor", error})
+        return res.status(500).json({message:"Error en el servidor", error, data:null})
     }
 }
 
@@ -21,10 +21,10 @@ export const LoginGuest : RequestHandler= async (req, res, next)=>{
     try {
         // crear token y devolverlo
         const serviceResponse = tokenService.create()
-        return res.status(serviceResponse.status).setHeader("set-Cookie", serviceResponse.data).json({message:"Ok", error:null})
+        return res.status(serviceResponse.status).setHeader("set-Cookie", serviceResponse.data).json({message:"Ok", error:null, data:null})
         
     } catch (error) {
-        return res.status(500).json({message:"Error en el servidor", error})
+        return res.status(500).json({message:"Error en el servidor", error, data:null})
     }
 }
 
@@ -45,6 +45,6 @@ export const logout : RequestHandler= (req, res, next)=>{
         return res.status(200).clearCookie("myTokenName").json({message:"Logout succesfully", errror:false, data:null})
         
     } catch (error) {
-        return res.status(500).json({message:"Error en el servidor", error})
+        return res.status(500).json({message:"Error en el servidor", error, data:null})
     }
 }

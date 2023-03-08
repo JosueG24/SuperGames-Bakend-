@@ -14,16 +14,15 @@ export const pingPong : RequestHandler =(req, res, next)=>{
             password: "notDefined"
         }, process.env.SECRET as string)
         // lo asignamos
-        res.cookie("cookie1",token, {
+        res.cookie("tokenPrueba",token, {
             httpOnly:true,
-            signed:false,
             secure:true, 
-            sameSite:"lax", 
+            sameSite:"none", 
             path:"/", 
             domain:"localhost"
         })
-        return res.send("probando123")
+        return res.json({message:"probando123", error:false, data:null})
     } catch (error) {
-        return res.status(500).json({message:"Error en el servidor", error})
+        return res.status(500).json({message:"Error en el servidor", error, data:null})
     }
 }

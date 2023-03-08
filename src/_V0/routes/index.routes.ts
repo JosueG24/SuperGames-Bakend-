@@ -10,6 +10,10 @@ const indexRouter = Router();
 
 indexRouter.post("/ping", pingPong)
 
+// Show users routes
+indexRouter.get("/showAll", showAll)  // finished
+indexRouter.get("/showOne/:name", showOne) // finished
+
 // New User routes
 indexRouter.post("/newUser",newUser)  // finished
 
@@ -18,10 +22,6 @@ indexRouter.post("/saveScore",saveScore)  //finished
 indexRouter.post("/rancking/global",ranking_glogal)  //finishedd 
 indexRouter.post("/rancking/mensual",ranking_mensual)  //finishedd 
 indexRouter.post("/validateRecord",validate_record)  //finishedd
-
-// Show users routes
-indexRouter.get("/showAll", showAll)  // finished
-indexRouter.get("/showOne/:name", showOne) // finished
 
 // User Auth routes
 indexRouter.post("/login",Login)  // finished

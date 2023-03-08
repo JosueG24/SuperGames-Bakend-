@@ -17,7 +17,7 @@ export const saveScore : RequestHandler = async (req, res, next)=>{
         
         const service = new savewScoreService({mode:mode,level:level, puntuacion:puntuacion, userName:isValid.userName})
         const playService = await service.master()
-        return res.status(playService.status).json({message:playService.message, error:playService.error, data:true})
+        return res.status(playService.status).json({message:playService.message, error:playService.error, data:null})
          
     } catch (error) {
         console.log(error)
