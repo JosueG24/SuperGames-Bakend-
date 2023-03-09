@@ -1,5 +1,5 @@
-import { TokenValues, responseService } from "../../types";
-import { createTokenUser, createTokenGuest } from "../Tokens.service";
+import { TokenValues, responseService } from "../../types_V0";
+import { createTokenUser, createTokenGuest } from "../Tokens.service_V0";
 
 export default class serviceHandler{
 

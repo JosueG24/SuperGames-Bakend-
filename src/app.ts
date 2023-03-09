@@ -1,7 +1,8 @@
 import express from "express";
 import cookieParser from "cookie-parser"
 import cors from "cors"
-import indexRouter_V0 from "./_V0/routes/index.routes";
+import indexRouter_V0 from "./_V0/routes/index.routes_V0";
+import indexRouter_V1 from "./_V1/routes/index.routes_V1";
 import handleErrors from "./middlewares/handleErrors";
 import dotenv from 'dotenv';
 dotenv.config();
@@ -33,7 +34,7 @@ app.use(express.json());
 app.use("/api/V0/",indexRouter_V0);
 
 // routes V1
-
+app.use("/api/V1/",indexRouter_V1);
 
 // Handle errors
 app.use(handleErrors);

@@ -1,11 +1,11 @@
 import { RequestHandler, response } from "express";
-import { tokenValidator } from "../services/dataValidators.service";
+import { tokenValidator } from "../services/dataValidators.service_V1";
 import pool from "../../Database/Pool";
-import { tokenExtract } from "../types";
+import { tokenExtract } from "../types_V1";
 
-import savewScoreService from "../services/ScoreServices/saveScore.service";
-import ranckingsService from "../services/ScoreServices/ranckings.service";
-import validateRecordService from "../services/ScoreServices/validateRecord.service";
+import savewScoreService from "../services/ScoreServices/saveScore.service_V1";
+import ranckingsService from "../services/ScoreServices/ranckings.service_V1";
+import validateRecordService from "../services/ScoreServices/validateRecord.service_V1";
 
 export const saveScore : RequestHandler = async (req, res, next)=>{
     try {

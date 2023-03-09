@@ -1,9 +1,9 @@
 // Modulos de validación multiples para los servicios de la V0
 
-import { TokenValues } from "../types";
+import { TokenValues } from "../types_V1";
 import axios from "axios"
 import { verify } from "jsonwebtoken";
-import { tokenExtract } from "../types";
+import { tokenExtract } from "../types_V1";
 import pool from "../../Database/Pool";
 import dotenv from 'dotenv';
 dotenv.config();

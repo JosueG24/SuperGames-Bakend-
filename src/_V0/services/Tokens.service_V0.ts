@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 import {serialize} from "cookie"
-import { TokenValues } from "../types";
+import { TokenValues } from "../types_V0";
 import dotenv from 'dotenv';
 dotenv.config();
 

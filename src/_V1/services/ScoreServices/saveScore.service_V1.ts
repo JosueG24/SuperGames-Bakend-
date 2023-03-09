@@ -1,5 +1,5 @@
 import pool from "../../../Database/Pool"
-import { responseService } from "../../types"
+import { responseService } from "../../types_V1"
 
 interface params{
     mode:"memory"|"mines"|"snake",

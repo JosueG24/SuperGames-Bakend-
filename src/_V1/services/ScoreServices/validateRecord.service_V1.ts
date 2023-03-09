@@ -1,4 +1,4 @@
-import { responseService } from "../../types";
+import { responseService } from "../../types_V1";
 import pool from "../../../Database/Pool";
 
 interface params{

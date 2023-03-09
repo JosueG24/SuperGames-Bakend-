@@ -1,14 +1,14 @@
 import { Router } from "express";
 
-import { pingPong } from "../controllers/index.controllers";
-import { newUser } from "../controllers/newUser.controller";
-import { saveScore, ranking_glogal, ranking_mensual, validate_record } from "../controllers/score.controller";
-import { showAll, showOne } from "../controllers/showUsers.controller";
-import { Login, LoginGuest, logout } from "../controllers/userAuth.controller";
+import { pingPong } from "../controllers/index.cont_V0";
+import { newUser } from "../controllers/newUser.cont_V0";
+import { saveScore, ranking_glogal, ranking_mensual, validate_record } from "../controllers/score.cont_V0";
+import { showAll, showOne } from "../controllers/showUsers.cont_V0";
+import { Login, LoginGuest, logout } from "../controllers/userAuth.cont_V0";
 
 const indexRouter = Router();
 
-indexRouter.post("/ping", pingPong)
+indexRouter.get("/ping", pingPong)
 
 // Show users routes
 indexRouter.get("/showAll", showAll)  // finished

@@ -1,6 +1,6 @@
 import { RequestHandler } from "express"
-import { loginValidation, tokenValidator } from "../services/dataValidators.service"
-import tokenService from "../services/SessionServices/getToken.service";
+import { loginValidation, tokenValidator } from "../services/dataValidators.service_V1"
+import tokenService from "../services/SessionServices/getToken.service_V1";
 
 export const Login : RequestHandler= async (req, res, next)=>{
     try {
