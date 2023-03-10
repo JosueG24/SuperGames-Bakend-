@@ -27,15 +27,16 @@ export const saveScore : RequestHandler = async (req, res, next)=>{
 
 export const ranking_glogal : RequestHandler = async(req, res, next)=>{
     try {
-        const {mode} = req.body;
+        const {mode, userName} = req.body;
         
-        const {myTokenName} = req.cookies;
-        if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:"token inexistente", data:null})
-        const isValid:tokenExtract|boolean = tokenValidator(myTokenName)
-        if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:"tokien invalido", data:null})
-        const {userName} = isValid;
+        // anulamos la validacion de tokem devido a que la V0 es solo para pruebas
+        // const {myTokenName} = req.cookies;
+        // if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:"token inexistente", data:null})
+        // const isValid:tokenExtract|boolean = tokenValidator(myTokenName)
+        // if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:"tokien invalido", data:null})
+        // const {userName} = isValid;
 
-        const service = new ranckingsService({mode:mode, ranck:"global", userName:isValid.userName})
+        const service = new ranckingsService({mode:mode, ranck:"global", userName:userName})
         const playService = await service.master()
         return res.status(playService.status).json({message:playService.message, error:playService.error, data:playService.data})
 
@@ -47,15 +48,16 @@ export const ranking_glogal : RequestHandler = async(req, res, next)=>{
 
 export const ranking_mensual : RequestHandler = async (req, res, next)=>{
     try {
-        const {mode} = req.body;
+        const {mode, userName} = req.body;
 
-        const {myTokenName} = req.cookies;
-        if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:"token inexistente", data:null})
-        const isValid = tokenValidator(myTokenName)
-        if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:"token invalido", data:null})
-        const {userName} = isValid;
+        // anulamos la validacion de tokem devido a que la V0 es solo para pruebas
+        // const {myTokenName} = req.cookies;
+        // if(myTokenName == null) return res.status(401).json({message:"Unauthorized", error:"token inexistente", data:null})
+        // const isValid = tokenValidator(myTokenName)
+        // if(isValid == false) return res.status(401).clearCookie("myTokenName").json({message:"Unauthorized", error:"token invalido", data:null})
+        // const {userName} = isValid;
 
-        const service = new ranckingsService({mode:mode, ranck:"mensual", userName:isValid.userName})
+        const service = new ranckingsService({mode:mode, ranck:"mensual", userName:userName})
         const playService = await service.master()
         return res.status(playService.status).json({message:playService.message, error:playService.error, data:playService.data})
 
