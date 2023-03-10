@@ -21,7 +21,7 @@ export function createTokenUser(values:TokenValues){
 
             secure: true,
             sameSite:"lax",
-            domain: process.env.NODE_ENV == "desarrollo"?  "localhost":"supergames-bakend-production.up.railway.app",
+            domain: process.env.NODE_ENV == "desarrollo"?  "localhost":".jguzman.tk",
         })
     return myToken;
 }
@@ -43,7 +43,7 @@ export function createTokenGuest(){
 
             secure: true,
             sameSite:"lax",
-            domain: process.env.NODE_ENV == "desarrollo"?  "localhost":"supergames-bakend-production.up.railway.app",
+            domain: process.env.NODE_ENV == "desarrollo"?  "localhost":".jguzman.tk",
         })
     return myToken;
 }
