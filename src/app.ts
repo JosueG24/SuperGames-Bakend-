@@ -27,10 +27,15 @@ app.use((req, res, next)=>{
   res.header("Access-Control-Allow-Origin",origin) //editar esta variable en railway
   res.header("Access-Control-Allow-Credentials", "true")
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-Widht, Content-Type, Accept")
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
   next();
 })
 app.use(express.json());
+
+// Manejo de solicitudes OPTIONS
+app.options('*', (req, res) => {
+  res.status(200).send();
+});
 
 // routes V0
 app.use("/api/V0/",indexRouter_V0);
