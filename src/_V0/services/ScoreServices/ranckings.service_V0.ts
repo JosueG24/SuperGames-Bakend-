@@ -47,13 +47,13 @@ export default class handlerService{
             top10 = await pool.query("select * from memory_ranck where date >= ? order by puntos desc limit 10;", [this.latestMonth]);
         }
             if(this.userName == "guest"){
-                return {status:200, message:"datos enviados",error:null, data: {top:top10[0], myPosition:[[{
+                return {status:200, message:"datos enviados",error:null, data: {top:top10[0], myPosition:{
                     idUser: 0,
                     userName: 'Invitado',
                     puntos: 0,
                     date: this.DateFormated,
                     level: 0
-                }]]
+                }
                 }}
             }else{
                 const myPosition = await pool.query("select * from memory_ranck where userName = ? ;", [this.userName]);
@@ -68,13 +68,13 @@ export default class handlerService{
             top10 = await pool.query("select * from mine_ranck where date >= ? order by puntos desc limit 10;",[this.latestMonth]);
         }
         if(this.userName == "guest"){
-            return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:[[{
+            return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:{
                 idUser: 0,
                 userName: 'Invitado',
                 puntos: 0,
                 date: this.DateFormated,
                 level: 0
-              }]]
+              }
             }}
         }else{
             const myPosition = await pool.query("select * from mine_ranck where userName = ? ;", [this.userName]);
