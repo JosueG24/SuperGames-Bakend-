@@ -2,12 +2,17 @@ import { Router } from "express";
 
 import { pingPong } from "../../_V1/controllers/index.cont_V1";
 import { newUser } from "../../_V1/controllers/newUser.cont_V1";
+import { showAll, showOne } from "../controllers/showUsers.cont_V1";
 import { saveScore, ranking_glogal, ranking_mensual, validate_record } from "../../_V1/controllers/score.cont_V1";
 import { Login, LoginGuest, logout, sessionValidate } from "../../_V1/controllers/userAuth.cont_V1";
 
 const indexRouterV1 = Router();
 
 indexRouterV1.get("/ping", pingPong)
+
+// Show users routes
+indexRouterV1.get("/showAll", showAll)  // finished
+indexRouterV1.get("/showOne/:name", showOne) // finished
 
 // New User routes
 indexRouterV1.post("/newUser",newUser)  // finished
