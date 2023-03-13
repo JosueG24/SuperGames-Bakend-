@@ -11,7 +11,7 @@ try {
     // validamos los datos que recibimos
     const validationOfDates = await newUserValidator({ userName, email, password})
     if (validationOfDates == false){
-        return res.status(400).json({message:"Bad request", error:"La peticion contiene datos invalidos", data:null})
+        return res.status(400).json({message:"Ha ingresado datos invalidos", error:"La peticion contiene datos invalidos", data:null})
     }
     // Zona donde agregamos el usuario a la base de datos
         

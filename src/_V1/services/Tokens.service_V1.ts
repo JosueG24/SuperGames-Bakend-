@@ -26,7 +26,7 @@ export function createTokenUser(values:TokenValues){
     return myToken;
 }
 
-export function createTokenGuest(){
+export function createTokenGuest(){   
     let myToken;
         let token = jwt.sign({
             exp: Math.floor(Date.now()/1000)+(60*60*24*1),
@@ -43,7 +43,7 @@ export function createTokenGuest(){
 
             secure: true,
             sameSite:"lax",
-            domain: process.env.NODE_ENV == "desarrollo"?  "localhost":".jguzman.tk",
+            domain:  process.env.NODE_ENV == "desarrollo"?  "localhost":".jguzman.tk",
         })
     return myToken;
 }
