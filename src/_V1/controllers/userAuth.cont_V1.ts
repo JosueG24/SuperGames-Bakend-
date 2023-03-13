@@ -31,7 +31,7 @@ export const Login : RequestHandler= async (req, res, next)=>{
         }
         // crear token y devolverlo
         const serviceResponse = tokenService.create(validation)
-        return res.status(serviceResponse.status).setHeader("set-Cookie", serviceResponse.data).json({message:"Ok", error:null, data:null})
+        return res.status(serviceResponse.status).setHeader("set-Cookie", serviceResponse.data).json({message:"Inicio de sesión correcto", error:null, data:null})
     } catch (error) {
         return res.status(500).json({message:"Error en el servidor", error, data:null})
     }
@@ -41,7 +41,7 @@ export const LoginGuest : RequestHandler= async (req, res, next)=>{
     try {
         // crear token y devolverlo
         const serviceResponse = tokenService.create()
-        return res.status(serviceResponse.status).setHeader("set-Cookie", serviceResponse.data).json({message:"Ok", error:null, data:null})
+        return res.status(serviceResponse.status).setHeader("set-Cookie", serviceResponse.data).json({message:"Inicio de sesión correcto", error:null, data:null})
         
     } catch (error) {
         return res.status(500).json({message:"Error en el servidor", error, data:null})
