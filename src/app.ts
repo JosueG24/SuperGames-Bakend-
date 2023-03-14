@@ -38,7 +38,7 @@ app.options('*', (req, res) => {
 });
 
 // routes V0
-app.use("/api/V0/",indexRouter_V0);
+// app.use("/api/V0/",indexRouter_V0);
 
 // routes V1
 app.use("/api/V1/",indexRouter_V1);
