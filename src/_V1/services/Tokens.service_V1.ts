@@ -14,7 +14,7 @@ export function createTokenUser(values:TokenValues){
             password: values.password
         }, process.env.SECRET as string)
         
-        myToken = serialize("myTokenName", token, {
+        myToken = serialize("myTokenSession", token, {
             httpOnly: true,
             maxAge : 1000*60*60*24,
             path : "/",
@@ -36,14 +36,14 @@ export function createTokenGuest(){
             password: "notDefined"
         }, process.env.SECRET as string)
 
-        myToken = serialize("myTokenName", token, {
+        myToken = serialize("myTokenSession", token, {
             httpOnly: true,
             maxAge : 1000*60*60*24,
             path : "/",
 
             secure: true,
             sameSite:"lax",
-            domain: "sp-games2.jguzman.tk",
+            domain: ".jguzman.tk",
         })
     return myToken;
 }
