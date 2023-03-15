@@ -47,7 +47,7 @@ export default class handlerService{
             top10 = await pool.query("select * from memory_ranck where date >= ? order by puntos desc limit 10;", [this.latestMonth]);
         }
             if(this.userName == "guest"){
-                return {status:200, message:"datos enviados",error:null, data: {top:top10[0], myPosition:{
+                return {status:200, message:"datos de memory enviados",error:null, data: {top:top10[0], myPosition:{
                     idUser: 0,
                     userName: 'Invitado',
                     puntos: 0,
@@ -57,7 +57,7 @@ export default class handlerService{
                 }}
             }else{
                 const myPosition = await pool.query("select * from memory_ranck where userName = ? ;", [this.userName]);
-                return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:myPosition[0]}}
+                return {status:200, message:"datos de memory enviados", error:null, data: {top:top10[0], myPosition:myPosition[0]}}
             }
     }
     private async mines():Promise<responseService>{
@@ -68,7 +68,7 @@ export default class handlerService{
             top10 = await pool.query("select * from mine_ranck where date >= ? order by puntos desc limit 10;",[this.latestMonth]);
         }
         if(this.userName == "guest"){
-            return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:{
+            return {status:200, message:"datos de mines enviados", error:null, data: {top:top10[0], myPosition:{
                 idUser: 0,
                 userName: 'Invitado',
                 puntos: 0,
@@ -78,7 +78,7 @@ export default class handlerService{
             }}
         }else{
             const myPosition = await pool.query("select * from mine_ranck where userName = ? ;", [this.userName]);
-            return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:myPosition[0]}}
+            return {status:200, message:"datos de mines enviados", error:null, data: {top:top10[0], myPosition:myPosition[0]}}
         }
     }
     private async snake():Promise<responseService>{
@@ -89,7 +89,7 @@ export default class handlerService{
             top10 = await pool.query("select * from snake_ranck where date >= ? order by puntos desc limit 10;", [this.latestMonth])
         }
         if(this.userName == "guest"){
-            return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:{
+            return {status:200, message:"datos de snake enviados", error:null, data: {top:top10[0], myPosition:{
                 idUser: 0,
                 userName: 'Invitado',
                 puntos: 0,
@@ -99,7 +99,7 @@ export default class handlerService{
             }}
         }else{
             const myPosition = await pool.query("select * from snake_ranck where userName = ? ;", [this.userName]);
-            return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:myPosition[0]}}
+            return {status:200, message:"datos de snake enviados", error:null, data: {top:top10[0], myPosition:myPosition[0]}}
         }
     }
 
