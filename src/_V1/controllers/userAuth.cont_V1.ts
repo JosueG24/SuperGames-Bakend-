@@ -16,7 +16,7 @@ export const sessionValidate : RequestHandler= async (req, res, next)=>{
             return res.status(401).clearCookie("myTokenSession").json({message:"Invalid token", error:"token invalido", data:false})
         }
         // si todo esta correcto
-        return res.status(200).json({message:"Sesion Valida", error:false, data:true})
+        return res.status(200).json({message:"Sesion Valida", error:false, data:isValid.userName})
     } catch (error) {
         return res.status(500).json({message:"Error en el servidor", error, data:null})
     }
