@@ -14,7 +14,7 @@ export function createTokenUser(values:TokenValues){
             password: values.password
         }, process.env.SECRET as string)
         
-        myToken = serialize("myTokenSession", token, {
+        myToken = serialize("spgSession", token, {
             httpOnly: true,
             maxAge : 1000*60*60*24,
             path : "/",
@@ -36,7 +36,7 @@ export function createTokenGuest(){
             password: "notDefined"
         }, process.env.SECRET as string)
 
-        myToken = serialize("myTokenSession", token, {
+        myToken = serialize("spgSession", token, {
             httpOnly: true,
             maxAge : 1000*60*60*24,
             path : "/",
