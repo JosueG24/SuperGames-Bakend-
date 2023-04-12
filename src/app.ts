@@ -32,6 +32,11 @@ app.use((req, res, next)=>{
 })
 app.use(express.json());
 
+
+// static files
+app.use(express.static(__dirname+"/public"))
+
+
 // Manejo de solicitudes OPTIONS
 app.options('*', (req, res) => {
   res.status(200).send();
@@ -39,7 +44,6 @@ app.options('*', (req, res) => {
 
 // routes V0
 // app.use("/api/V0/",indexRouter_V0);
-
 // routes V1
 app.use("/api/V1/",indexRouter_V1);
 
