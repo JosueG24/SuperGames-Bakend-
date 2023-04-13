@@ -3,14 +3,10 @@ import { responseService } from "../../types_V0"
 
 interface params{
     mode:"memory"|"mines"|"snake",
-    ranck:"global"|"mensual",
-    userName:string,
 }
 
 export default class handlerService{
     mode:"memory"|"mines"|"snake";
-    ranck:"global"|"mensual";
-    userName:string;
     DateFormated: number;
     latestMonth: number;
 
@@ -21,8 +17,6 @@ export default class handlerService{
         this.latestMonth = dateNow2 - 2629743;
 
         this.mode = params.mode
-        this.ranck = params.ranck
-        this.userName = params.userName
     }
 
     public async master():Promise<responseService>{
@@ -40,67 +34,18 @@ export default class handlerService{
     }
 
     private async memory():Promise<responseService>{
-        let top10;
-        if(this.ranck = "global"){
-            top10 = await pool.query("select * from memory_ranck order by puntos desc limit 10;");
-        }else{
-            top10 = await pool.query("select * from memory_ranck where date >= ? order by puntos desc limit 10;", [this.latestMonth]);
-        }
-            if(this.userName == "guest"){
-                return {status:200, message:"datos enviados",error:null, data: {top:top10[0], myPosition:{
-                    idUser: 0,
-                    userName: 'Invitado',
-                    puntos: 0,
-                    date: this.DateFormated,
-                    level: 0
-                }
-                }}
-            }else{
-                const myPosition = await pool.query("select * from memory_ranck where userName = ? ;", [this.userName]);
-                return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:myPosition[0]}}
-            }
+        const top10 = await pool.query("select * from memory_ranck order by puntos desc limit 10;");
+        return {status:200, message:"datos enviados",error:null, data: {top:top10[0]}}
     }
     private async mines():Promise<responseService>{
-        let top10;
-        if(this.ranck = "global"){
-            top10 = await pool.query("select * from mine_ranck order by puntos desc limit 10;");
-        }else{
-            top10 = await pool.query("select * from mine_ranck where date >= ? order by puntos desc limit 10;",[this.latestMonth]);
-        }
-        if(this.userName == "guest"){
-            return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:{
-                idUser: 0,
-                userName: 'Invitado',
-                puntos: 0,
-                date: this.DateFormated,
-                level: 0
-              }
-            }}
-        }else{
-            const myPosition = await pool.query("select * from mine_ranck where userName = ? ;", [this.userName]);
-            return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:myPosition[0]}}
-        }
+
+        const top10 = await pool.query("select * from mine_ranck order by puntos desc limit 10;");
+        return {status:200, message:"datos enviados", error:null, data: {top:top10[0]}}
+
     }
     private async snake():Promise<responseService>{
-        let top10;
-        if(this.ranck = "global"){
-            top10 = await pool.query("select * from snake_ranck order by puntos desc limit 10;");
-        }else{
-            top10 = await pool.query("select * from snake_ranck where date >= ? order by puntos desc limit 10;", [this.latestMonth])
-        }
-        if(this.userName == "guest"){
-            return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:{
-                idUser: 0,
-                userName: 'Invitado',
-                puntos: 0,
-                date: this.DateFormated,
-                level: 0
-              }
-            }}
-        }else{
-            const myPosition = await pool.query("select * from snake_ranck where userName = ? ;", [this.userName]);
-            return {status:200, message:"datos enviados", error:null, data: {top:top10[0], myPosition:myPosition[0]}}
-        }
+        const top10 = await pool.query("select * from snake_ranck order by puntos desc limit 10;");
+        return {status:200, message:"datos enviados", error:null, data: {top:top10[0]}}
     }
 
     private static serverError(error:any):responseService{
