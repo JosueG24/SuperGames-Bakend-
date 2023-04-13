@@ -34,7 +34,6 @@ app.use(express.json());
 
 
 // static files
-console.log(__dirname)
 app.use(express.static(__dirname+"/public"))
 
 
