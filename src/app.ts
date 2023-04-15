@@ -22,9 +22,13 @@ app.use(cors({
 }));
 */
 app.use((req, res, next)=>{
-  const origin = req.headers.origin
+  const allowedOrigins = ["https://sp-games2.jguzman.tk/","http://localhost:4000","http://localhost:3000"]
+  const origin = req.headers.origin as string
   console.log(origin)
-  res.header("Access-Control-Allow-Origin",origin) //editar esta variable en railway
+  if(allowedOrigins.includes(origin)){
+    res.header("Access-Control-Allow-Origin", origin)
+}
+  // res.header("Access-Control-Allow-Origin",origin) //editar esta variable en railway
   res.header("Access-Control-Allow-Credentials", "true")
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-Widht, Content-Type, Accept")
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
