@@ -22,7 +22,7 @@ app.use(cors({
 }));
 */
 app.use((req, res, next)=>{
-  const allowedOrigins = ["https://sp-games2.jguzman.tk/","http://localhost:4000","http://localhost:3000"]
+  const allowedOrigins = ["https://sp-games2.jguzman.tk","http://localhost:4000","http://localhost:3000"]
   const origin = req.headers.origin as string
   console.log(origin)
   if(allowedOrigins.includes(origin)){
